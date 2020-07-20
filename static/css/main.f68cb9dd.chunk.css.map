@@ -1,0 +1,1 @@
+{"version":3,"sources":["Style.css"],"names":[],"mappings":"AAAA,iBACA,kBACA,CACA,mBACA,UACA,CACA,QACA,SACA","file":"main.f68cb9dd.chunk.css","sourcesContent":[".PanelHeader__in {\r\nbackground: #8bc5f7;\r\n}\r\n.PanelHeader__in > * {\r\ncolor: #fff;\r\n}\r\n.Icon > * {\r\nfill: #fff;\r\n}"]}
