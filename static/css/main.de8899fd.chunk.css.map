@@ -1,1 +1,0 @@
-{"version":3,"sources":["Style.css"],"names":[],"mappings":"AAAA,iBACA,kBACA,CACA,mBACA,aACA,CACA,QACA,kBACA,CACA,kBACA,UACA","file":"main.de8899fd.chunk.css","sourcesContent":[".PanelHeader__in {\r\nbackground: #94bbe9;\r\n}\r\n.PanelHeader__in > * {\r\ncolor: #4682B4;\r\n}\r\n.Button {\r\nbackground: #8A2BE2;\r\n}\r\n.HorizontalScroll {\r\ncolor: #000000\t;\r\n}"]}
