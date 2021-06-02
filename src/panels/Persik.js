@@ -1,68 +1,50 @@
-  
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { platform, PanelHeader, Panel, Div,  Button, Group, Header, Separator } from '@vkontakte/vkui';
+import { openDialog } from 'bugy';
+import './Persik.css';
+import { PanelHeaderBack } from '@vkontakte/vkui';
+import Icon20Stars from '@vkontakte/icons/dist/20/stars';
 
-import Epic from "@vkontakte/vkui/dist/components/Epic/Epic";
-import Tabbar from "@vkontakte/vkui/dist/components/Tabbar/Tabbar";
-import TabbarItem from "@vkontakte/vkui/dist/components/TabbarItem/TabbarItem";
+const osName = platform();
 
-class NTabbar extends React.Component {
-	constructor(props) {
-		super(props);
 
-		this.state = {
-			activeStory: props.activeStory
-		};
+const Persik  = ({ wal }) => (
+	<Panel separator={false} style={{ borderRadius: "0px 0px -5px -5px" }} className="myClas" id="backgroundpage">
+		<PanelHeader left={<PanelHeaderBack onClick={wal} data-to="more" />} id="olw" separator={false}
+		>
+			Инструкция
+		</PanelHeader>
 
-		this.__buildBar = this.__buildBar.bind(this);
-		this.goStory = this.goStory.bind(this);
-	}
+		<Div className="block">
+		<Header className="block" mode="secondary">У меня есть маска, как её опубликовать?</Header> 
+	
+		<Group
+		 className="cd-block"
+          description="Чтобы добавить маску в сервис, необходимо с помощью кнопки ниже перейти в чат группы «Художники масок» и прикрепить полученную ссылку на вашу маску с указанием в сообщении «#В_MASKS». После этого ожидайте ответа от модератора. Готово, ваша маска появилась в данном сервисе."
+          >
+        </Group>
+		<Separator> </Separator>
+<Header separator={false} mode="secondary">У меня нет маски, как её создать?</Header>
+<Group 
+ separator={false}
+ className="cd-block"
+		  description="Для создания маски перейдите в чат группы «Художники масок» с помощью кнопки ниже и напишите слово «Привет», чтобы получить подробное руководство по созданию масок."
+        >
+        </Group>
+		</Div>
+    <Div separator={false} className="buttonpersik">
+    <Button separator={false} before={<Icon20Stars/>} onClick={()=>openDialog({ id: -157574223 }) } style={{ background: '#4986cc', color: '#fff' }} mode="secondary" size="l">
+          Поехали!
+        </Button>
+    </Div>
+	<br/>
+	</Panel>
+);
 
-	goStory(e) {
-		this.setState({ activeStory: e.currentTarget.dataset.story });
-	}
+Persik.propTypes = {
+	id: PropTypes.string.isRequired,
+	go: PropTypes.func.isRequired,
+};
 
-	__buildBar(items) {
-		const { goStory } = this;
-		const { activeStory } = this.state;
-
-		return (
-			<Tabbar>
-				{React.Children.map(items, (Child, key) => (
-					<TabbarItem
-						key={key}
-						onClick={goStory}
-						selected={activeStory === Child.props.id}
-						data-story={Child.props.id}
-						text={Child.props.title || ""}
-						children={Child.props.icon || null}
-						label={Child.props.label || ""}
-					/>
-				))}
-			</Tabbar>
-		);
-	}
-
-	render() {
-		const { id, children, showModal, hideModal, goPage, isModalOpen, pageParams } = this.props;
-		const { activeStory } = this.state;
-		const { __buildBar } = this;
-
-		return (
-			<Epic id={id} activeStory={activeStory} tabbar={__buildBar(children)}>
-				{React.Children.map(children, (Child) =>
-					React.cloneElement(Child, {
-						...Child.props,
-						goPage,
-						showModal,
-						hideModal,
-						isModalOpen,
-						pageParams
-					})
-				)}
-			</Epic>
-		);
-	}
-}
-
-export default NTabbar;
+export default Persik;
